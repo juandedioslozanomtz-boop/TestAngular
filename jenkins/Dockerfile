@@ -7,3 +7,4 @@ RUN apt-get update \
     && apt-get clean
 
 USER jenkins
+

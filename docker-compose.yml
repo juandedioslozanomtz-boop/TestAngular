@@ -2,9 +2,7 @@ version: '3.8'
 
 services:
   jenkins:
-    build:
-      context: jenkins
-      dockerfile: Dockerfile    
+    build: ./jenkins
     container_name: jenkins
     user: root
     ports:
@@ -12,10 +10,8 @@ services:
       - "50000:50000"
     volumes:
       - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /usr/bin/docker:/usr/bin/docker
-    environment:
-      - JENKINS_OPTS=--prefix=/jenkins
+      - /var/run/docker.sock:/var/run/docker.sock  # acceso a Docker
+    restart: always
 
   angular-app:
     image: testangular:latest
